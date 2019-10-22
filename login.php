@@ -1,18 +1,21 @@
 <?php
+
 session_start();
-require_once "config.inc.php";
+require_once "inc/config.inc.php";
+
 $email = '';
-$password='';
+$password = '';
 $errors = array();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$email = strip_tags($_POST['email']);
 	$password = strip_tags($_POST['password']);
 	
 	//validation	
-	if(empty($email)){
+	if(empty($email)) {
 		$errors[] = "Email field is required"; 
 	}
-	if(empty($password)){
+	if(empty($password)) {
 		$errors[] = "Password field is required"; 
 	}
 	
@@ -27,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$hashedPwdDB = $user->password;
 			if (password_verify($password, $hashedPwdDB)) {
 				$_SESSION['id'] =  $user->id;
-				$_SESSION['name'] =  $user->name;
-				$_SESSION['email'] =  $user->email;
+				$_SESSION['name'] = $user->name;
+				$_SESSION['email'] = $user->email;
 				header("Location:dashboard.php");
 				exit;
 			}	
@@ -52,10 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
 	<title>Login Page</title>
- 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+ 	<script src="js/jquery.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link href="css/all.css" rel="stylesheet"  integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
     
 <body>
@@ -64,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<div class="">
 				<div class="d-flex justify-content-center">
 	
-						<img src="https://img.milanuncios.com/fg/2678/19/267819026_1.jpg?VersionId=VwpsJPM.a9vTGYB0zjKFMPXdma24Ic4p" alt="Logo">
+						<img src="img/logo.jpg" alt="Logo">
 
 				</div>
 				<div class="d-flex justify-content-center form_container">
