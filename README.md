@@ -1,7 +1,7 @@
-### Ejemplo sencillo de login con php-mysql
+# Ejemplo sencillo de login con php-mysql
 
 
-# Ejecuta el siguiente script mysql:
+## Ejecuta el siguiente script mysql:
 
 CREATE DATABASE login_example;
 USE login_example;
@@ -40,7 +40,7 @@ INSERT INTO contracts(client_id) VALUES(2);
 INSERT INTO contracts(client_id) VALUES(2);
 INSERT INTO contracts(client_id) VALUES(2);
 
-# Credenciales:
+## Credenciales:
 (Esta encriptado con bcrypt)
 - marc@email.com : password
 - pepe@email.com : 1234
