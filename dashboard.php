@@ -14,9 +14,6 @@ if(empty($name)) {
 	exit;
 }
 ?>
-
-
-<script type="text/javascript" src='https://cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json'></script>
  
 
 

@@ -4,12 +4,11 @@ require_once "config.inc.php";
 $email = '';
 $password='';
 $errors = array();
-//Checking the request method post to know if the form really posts any data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$email = strip_tags($_POST['email']);
 	$password = strip_tags($_POST['password']);
 	
-	//perfroming the validation	
+	//validation	
 	if(empty($email)){
 		$errors[] = "Email field is required"; 
 	}
@@ -17,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errors[] = "Password field is required"; 
 	}
 	
-	//You are goo to go
+	//If no error do query
 	if(empty($errors)) {
 		$sth = $conn->prepare("SELECT * FROM clients WHERE email = :email LIMIT 1");
 		$sth->bindParam(':email', $email, PDO::PARAM_STR);
@@ -45,13 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 }
 
-
-
 ?>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+
 
 <!DOCTYPE html>
 <html>
@@ -59,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
 	<title>Login Page</title>
  
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
