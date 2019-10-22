@@ -9,15 +9,24 @@ USE login_example;
 CREATE TABLE clients (
   id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(255) NOT NULL,
+  CONSTRAINT clients_pk PRIMARY KEY (id)
+);
+
+INSERT INTO clients (name) VALUES ('Leo Messi');
+INSERT INTO clients (name) VALUES ('Cristiano Ronaldo');
+INSERT INTO clients (name) VALUES ('Neymar');
+
+CREATE TABLE users (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
   email varchar(255)  NOT NULL,
   password varchar(255) NOT NULL,
   CONSTRAINT clients_pk PRIMARY KEY (id)
 );
 
-INSERT INTO clients (name, email, password) VALUES
-('Marc Vaquero', 'marc@email.com', '$2y$12$kEn1rMXy6eAh/5QUNoMPqe2oq1TEX.fcJ9MunsWI8bW.JLChCMT2G');
-INSERT INTO clients (name, email, password) VALUES
-('Pepe Goteras', 'pepe@email.com', '$2y$12$TdQwV33v682Z7rWiWHLFr.p2WRhkiUULufe1c.nxi1VTKkHvjL3cC');
+INSERT INTO users (name, email, password) VALUES
+('Marc Vaquero', 'marc@email.com', '$2y$12$6QInd/pnThL/jaOj9/yXWuV0sSQ/K4xCtw5.lKWJ/TrIvALPDo3jW');
+
 
 CREATE TABLE contracts (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -39,9 +48,15 @@ INSERT INTO contracts(client_id) VALUES(2);
 INSERT INTO contracts(client_id) VALUES(2);
 INSERT INTO contracts(client_id) VALUES(2);
 INSERT INTO contracts(client_id) VALUES(2);
+INSERT INTO contracts(client_id) VALUES(3);
+INSERT INTO contracts(client_id) VALUES(3);
+INSERT INTO contracts(client_id) VALUES(3);
+INSERT INTO contracts(client_id) VALUES(3);
+INSERT INTO contracts(client_id) VALUES(3);
+INSERT INTO contracts(client_id) VALUES(3);
+INSERT INTO contracts(client_id) VALUES(3);
 
 ## Credenciales:
 (Esta encriptado con bcrypt)
 - marc@email.com : password
-- pepe@email.com : 1234
 
