@@ -42,6 +42,6 @@ INSERT INTO contracts(client_id) VALUES(2);
 
 # Credenciales:
 (Esta encriptado con bcrypt)
-marc@email.com : password
-pepe@email.com : 1234
+- marc@email.com : password
+- pepe@email.com : 1234
 
