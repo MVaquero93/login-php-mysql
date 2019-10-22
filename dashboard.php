@@ -5,7 +5,7 @@ require_once "config.inc.php";
 $name = $_SESSION['name'];
 $id = $_SESSION['id'];
 
-$sth = $conn->prepare("SELECT c.*, cl.name FROM contracts c INNER JOIN clients cl ON c.client_id = cl.id WHERE c.client_id = :client_id");
+$sth = $conn->prepare("SELECT c.*, cl.name FROM contracts c INNER JOIN clients cl ON c.client_id = cl.id");
 		$sth->bindParam(':client_id', $id, PDO::PARAM_STR);
 		$sth->execute();	
 //Check session is already set, otherwise redirect to login page
@@ -31,7 +31,7 @@ if(empty($name)) {
 		<a class="btn btn-primary float-right" href="logout.php">Logout</a>
 	</div>
 </div>
-<input id="search" class="form-control col-3 mt-2" type="text" placeholder="Buscar solo por Id. Contrato" aria-label="Buscar solo por Id. Contrato">
+<input id="search" class="form-control col-3 mt-2" type="text" placeholder="Buscar solo por Id. Cliente" aria-label="Buscar solo por Id. Cliente">
 <table id='contracts_table' class="table table-striped table-bordered mt-3" style="width:100%">
         <thead>
             <tr>
@@ -61,7 +61,7 @@ $(document).ready(function() {
 	$("#search").on("keyup", function() {
 		var found = false;
 		var value = $(this).val().toLowerCase();
-		$("#contracts_table tr td:nth-child(1)").filter(function() {
+		$("#contracts_table tr td:nth-child(2)").filter(function() {
 		 $(this).parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)		 
 		 if($(this).text().toLowerCase().indexOf(value) > -1) {
 			found = true;

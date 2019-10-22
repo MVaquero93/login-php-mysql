@@ -18,17 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	//If no error do query
 	if(empty($errors)) {
-		$sth = $conn->prepare("SELECT * FROM clients WHERE email = :email LIMIT 1");
+		$sth = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
 		$sth->bindParam(':email', $email, PDO::PARAM_STR);
 		$sth->execute();
-		$client = $sth->fetch(PDO::FETCH_OBJ);
-		if(!empty($client)) {
+		$user = $sth->fetch(PDO::FETCH_OBJ);
+		if(!empty($user)) {
 			//Verifying the password
-			$hashedPwdDB = $client->password;
+			$hashedPwdDB = $user->password;
 			if (password_verify($password, $hashedPwdDB)) {
-				$_SESSION['id'] =  $client->id;
-				$_SESSION['name'] =  $client->name;
-				$_SESSION['email'] =  $client->email;
+				$_SESSION['id'] =  $user->id;
+				$_SESSION['name'] =  $user->name;
+				$_SESSION['email'] =  $user->email;
 				header("Location:dashboard.php");
 				exit;
 			}	
